@@ -1,4 +1,4 @@
-package com.example.testgrpc;
+package com.example.testgrpc.service;
 
 
 import com.example.testgrpc.proto.HelloReply;

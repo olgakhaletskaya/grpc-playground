@@ -3,6 +3,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.example.testgrpc.proto";
 option java_outer_classname = "HelloWorldProto";
+import "google/protobuf/empty.proto";
 
 service Simple {
     rpc SayHello (HelloRequest) returns (HelloReply) {
@@ -19,6 +20,30 @@ message HelloRequest {
 message HelloReply {
     string message = 1;
 }
+
+message JwtRequest {
+    string userName = 1;
+    string password = 2;
+}
+
+message JwtToken {
+    string jwtToken = 1;
+}
+
+message Employee {
+    string name = 1;
+    string email = 2;
+    int32 salary = 3;
+}
+
+service AuthService {
+    rpc authorize(JwtRequest) returns(JwtToken){}
+}
+
+service InfoService {
+    rpc getEmployeeInfo(google.protobuf.Empty) returns(Employee){}
+}
+
 
 message Profile {
     string name = 1;
